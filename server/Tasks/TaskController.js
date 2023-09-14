@@ -33,6 +33,20 @@ router.post('/addtask', taskDataValidation, async (req, res) => {
 })
 
 
+router.get('/task/:id', async (req, res) => {
+    const {id}=req.params;
+
+    try {
+        const task = await Task.findById(id);
+        return res.status(200).json({ task: task, sucess: true });
+
+    } catch (error) {
+        return res.status(500).json({ message: error.message, sucess: true });
+
+    }
+})
+
+
 router.put('/task/:id', taskDataValidation, async (req, res) => {
 
     try {
@@ -75,7 +89,8 @@ router.delete('/task/:id', async (req, res) => {
 })
 
 
-router.get('/getalltasks', async (req, res) => {
+
+router.get('/getalltask', async (req, res) => {
 
     try {
         const tasks = await Task.find();

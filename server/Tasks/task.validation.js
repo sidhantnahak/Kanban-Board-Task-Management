@@ -12,6 +12,6 @@ exports.taskDataValidation = [
     body("description")
         .exists({ checkFalsy: true }).withMessage("Description is required")
         .isString().withMessage("Description should be string")
-        .isLength({ min: 5, max: 150 }).withMessage("Description is too short")
+        .isLength({ min: 4 }).withMessage("Description is too short")
 
 ]

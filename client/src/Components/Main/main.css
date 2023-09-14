@@ -35,7 +35,7 @@
     width: 100%;
     display: grid;
     grid: auto/auto auto auto;
-    gap: 2rem;
+    gap: 3.5rem;
     justify-content: center;
 }
 
@@ -92,7 +92,13 @@
 }
 @media (max-width:450px) {
     .form_check_div{
-        font-size: 0.8rem !important;
+        font-size: 0.5rem !important;
+       
     }
+    .form_check_div div>label{
+        padding-left: 3px;
+    }
+
+
     
 }

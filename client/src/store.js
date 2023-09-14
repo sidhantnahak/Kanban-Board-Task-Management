@@ -1,11 +1,12 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { alluser, userReducer } from './Components/redux/userReducer';
+import { alltasks, taskdetail, taskReducer } from '../src/redux/taskReducer';
 
 const reducer = combineReducers({
-    user: userReducer,
-    alluser: alluser
+    task:taskReducer ,
+    tasks: alltasks,
+    taskdetail:taskdetail
 
 })
 const middleware = [thunk];
