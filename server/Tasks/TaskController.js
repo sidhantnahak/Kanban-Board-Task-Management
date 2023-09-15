@@ -102,39 +102,6 @@ router.get('/getalltask', async (req, res) => {
     }
 })
 
-router.get('/getalltasks/todo', async (req, res) => {
 
-    try {
-        const tasks = await Task.find({status:"To Do"});
-        return res.status(200).json({ tasks: tasks, sucess: true });
-
-    } catch (error) {
-        return res.status(500).json({ message: error.message, sucess: true });
-
-    }
-})
-
-router.get('/getalltasks/doing', async (req, res) => {
-
-    try {
-        const tasks = await Task.find({status:"Doing"});
-        return res.status(200).json({ tasks: tasks, sucess: true });
-
-    } catch (error) {
-        return res.status(500).json({ message: error.message, sucess: true });
-
-    }
-})
-router.get('/getalltasks/done', async (req, res) => {
-
-    try {
-        const tasks = await Task.find({status:"Done"});
-        return res.status(200).json({ tasks: tasks, sucess: true });
-
-    } catch (error) {
-        return res.status(500).json({ message: error.message, sucess: true });
-
-    }
-})
 
 module.exports = router

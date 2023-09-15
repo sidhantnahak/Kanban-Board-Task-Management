@@ -40,17 +40,17 @@ const Home = ({setnote}) => {
             </div>
 
             <div id='sidebar' className='sidebar'>
-                <Link onClick={() => { taskHandler(); setnote("All Tasks"); navigate("/goto") }}>Get All Tasks</Link>
+                <Link onClick={() => { taskHandler(); setnote("All Tasks") }}>Get All Tasks</Link>
                 <Link onClick={() => setnote("To Do")}>To Do Tasks</Link>
                 <Link onClick={() => setnote("Doing")}>Doing Tasks</Link>
                 <Link onClick={() => setnote("Done")}>Done Tasks</Link>
             </div>
             <div id='sidebar2' className="sidebar2">
                 <ul>
-                    <li><Link   >Get All Tasks</Link></li>
-                    <li><Link>To Do Tasks</Link></li>
-                    <li><Link  >Doing Tasks</Link></li>
-                    <li><Link  >Done Tasks</Link></li>
+                    <li><Link   onClick={() => { taskHandler(); setnote("All Tasks") }} >Get All Tasks</Link></li>
+                    <li><Link onClick={() => setnote("To Do")}>To Do Tasks</Link></li>
+                    <li><Link onClick={() => setnote("Doing")} >Doing Tasks</Link></li>
+                    <li><Link onClick={() => setnote("Done")} >Done Tasks</Link></li>
                      
                     
                     

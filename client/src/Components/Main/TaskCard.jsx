@@ -22,8 +22,6 @@ const TaskCard = ({ details }) => {
 
     useEffect(() => {
         if (isUpdated) {
-                    console.log("yes")
-            console.log(editdata)
             seteditdata({ etitle: "", edescription: "", estatus: "" });
         }
 
@@ -32,7 +30,6 @@ const TaskCard = ({ details }) => {
         }
     }, [dispatch, task, isUpdated])
 
-    console.log(editdata)
     return (
         <>
             <div className="card shadow-lg" style={{ width: "21rem" }}>
@@ -40,8 +37,8 @@ const TaskCard = ({ details }) => {
                     <h5 className="card-title">{details.title}</h5>
                     <p className="card-text">{details.description.length > 25 ? <>{details.description.substr(0, 25)} <span onClick={() => dispatch(get_task(details._id))} type='button' style={{ color: "blue", fontWeight: "600" }} data-toggle="modal" data-target="#exampleModalCenter"> more....</span></> : details.description} </p>
 
-                    <Link onClick={() => { navigate("task/id"); dispatch(get_task(details._id)) }} type='button' style={{ marginRight: "1rem" }} href="#" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa-solid fa-eye"></i></Link>
-                    <Link onClick={() => dispatch(get_task(details._id))} style={{ marginRight: "1rem" }} className='btn btn-primary' data-toggle="modal" data-target="#exampleModalLong"><i class="fa-solid fa-pen-to-square"></i></Link>
+                    <Link onClick={() => { navigate("task/id"); dispatch(get_task(details._id)) }} type='button' style={{ marginRight: "1rem" }} href="#" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i className="fa-solid fa-eye"></i></Link>
+                    <Link onClick={() => dispatch(get_task(details._id))} style={{ marginRight: "1rem" }} className='btn btn-primary' data-toggle="modal" data-target="#exampleModalLong"><i className="fa-solid fa-pen-to-square"></i></Link>
 
                     <Link onClick={() => dispatch(delete_task(details._id))} className="btn btn-primary">Delete Task</Link>
                 </div>
@@ -50,16 +47,16 @@ const TaskCard = ({ details }) => {
 
             {/*update*/}
 
-            <div class="modal fade" id="exampleModalLong" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Edit Task</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="exampleModalLong" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLongTitle">Edit Task</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div className="modal-body">
                             <form style={{ width: "100%", padding: "1rem 2rem", margin: "auto", fontSize: "1.1rem", fontWeight: "700", color: "rgb(67, 52, 52)" }} onSubmit={editHandler}>
                                 <div className="mb-3">
                                     <label htmlFor="exampleFormControlInput1" className="form-label">Enter Title</label>
@@ -96,21 +93,21 @@ const TaskCard = ({ details }) => {
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" data-dismiss="modal" class="btn btn-secondary" >Close</button>
-                            <button onClick={() => { dispatch(update_task(task._id, editdata)) }} data-dismiss="modal" type="button" class="btn btn-primary">Save changes</button>
+                        <div className="modal-footer">
+                            <button type="button" data-dismiss="modal" className="btn btn-secondary" >Close</button>
+                            <button onClick={() => { dispatch(update_task(task._id, editdata)) }} data-dismiss="modal" type="button" className="btn btn-primary">Save changes</button>
                         </div>
                     </div>
                 </div>
             </div>
             {/* view details */}
 
-            <div class="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
+            <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-centered" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLongTitle">{task && task.title}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
