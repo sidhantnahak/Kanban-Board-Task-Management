@@ -103,3 +103,11 @@ font: bold;
     font-size: 1.4rem;
 }
 }
+
+@media(max-width:370px){
+    .sidebar2{
+        width: 100%;
+        left: 1em;
+        width: unset;
+    }
+}

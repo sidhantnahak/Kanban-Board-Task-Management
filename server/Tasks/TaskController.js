@@ -52,7 +52,7 @@ router.put('/task/:id', taskDataValidation, async (req, res) => {
     try {
         const { title, description, status } = req.body;
         const { id } = req.params
-        if (!title || !description) {
+        if (!title || !description ) {
             return res.status(401).json({ message: "enter required fields", sucess: false })
         }
         const errors = validationResult(req)

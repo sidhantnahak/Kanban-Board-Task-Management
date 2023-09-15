@@ -38,6 +38,7 @@ export const get_task = (id) => async (dispatch) => {
 
 export const update_task = (id,data) => async (dispatch) => {
     const { etitle, edescription, estatus } = data;
+    console.log(data)
 
     try {
         dispatch({ type: update_task_request })

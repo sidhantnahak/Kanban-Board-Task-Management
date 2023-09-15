@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './home.css'
 
-import { Main } from './Main'
-const Home = () => {
-    const [note, setnote] = useState("All Tasks")
+const Home = ({setnote}) => {
     const [width,setwidth]=useState(window.innerWidth);
     window.onresize=()=>{
         setwidth(window.innerWidth);
@@ -60,7 +58,6 @@ const Home = () => {
 
                 </ul>
             </div>
-            <Main note={note} />
 
         </>
     )

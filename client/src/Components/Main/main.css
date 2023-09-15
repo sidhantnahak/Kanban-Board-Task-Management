@@ -39,7 +39,9 @@
     justify-content: center;
 }
 
-
+p{
+    word-wrap: break-word;
+}
 @media (max-width:1500px) {
     .status_div{
     grid: auto/auto auto auto  ;

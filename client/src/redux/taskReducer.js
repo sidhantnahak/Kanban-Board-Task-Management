@@ -1,4 +1,4 @@
-import { clear_errors, delete_task_fail, delete_task_request, delete_task_reset, delete_task_sucess, getalltask_fail, getalltask_request, getalltask_sucess, gettask_fail, gettask_request, gettask_sucess, register_task_fail, register_task_request, register_task_reset, register_task_sucess, update_task_request, update_task_reset, update_task_sucess } from "./taskConstants";
+import { clear_errors, delete_task_fail, delete_task_request, delete_task_reset, delete_task_sucess, getalltask_fail, getalltask_request, getalltask_sucess, gettask_fail, gettask_request, gettask_sucess, register_task_fail, register_task_request, register_task_reset, register_task_sucess, update_task_fail, update_task_request, update_task_reset, update_task_sucess } from "./taskConstants";
 
 
 export const taskReducer = (state = { task: {} }, action) => {
@@ -33,6 +33,7 @@ export const taskReducer = (state = { task: {} }, action) => {
                     }
         case register_task_fail:
             case delete_task_fail:
+                case update_task_fail:
             return {
                 ...state,
                 error: action.payload,
