@@ -11,8 +11,7 @@ const TaskCard = ({ details }) => {
     const [editdata, seteditdata] = useState({ etitle: "", edescription: "", estatus: "" });
 
     const { task } = useSelector(state => state.taskdetail)
-    const { error, loading, isUpdated } = useSelector(state => state.task);
-
+    const { error,  isUpdated } = useSelector(state => state.task);
     const onchangeHandler2 = (e) => {
         seteditdata({ ...editdata, [e.target.name]: e.target.value })
     }
@@ -21,10 +20,7 @@ const TaskCard = ({ details }) => {
     }
 
     useEffect(() => {
-        if (isUpdated) {
-            seteditdata({ etitle: "", edescription: "", estatus: "" });
-        }
-
+   
         if (task) {
             seteditdata({ etitle: task.title, edescription: task.description, estatus: task.status })
         }

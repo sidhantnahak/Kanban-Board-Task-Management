@@ -58,7 +58,6 @@ export const taskReducer = (state = { task: {} }, action) => {
             return {
                 ...state,
                 error: null,
-                loading: false
             }
     }
 
@@ -95,7 +94,7 @@ export const taskdetail = (state = { task: {} }, action) => {
             return {
                 ...state,
                 error: null,
-                loading: false
+  
             }
 
     }
@@ -108,7 +107,8 @@ export const alltasks = (state = { alltask: {} }, action) => {
     switch (action.type) {
         case getalltask_request:
             return {
-                loading: true,
+                ...state,
+                loading: true
             }
 
         case getalltask_sucess:
@@ -121,19 +121,20 @@ export const alltasks = (state = { alltask: {} }, action) => {
             return {
                 ...state,
                 error: action.payload,
-                loading: false,
+                loading: false
             }
 
         case clear_errors:
             return {
                 ...state,
-                error: null
+                error: null,
+   
             }
         default:
             return {
                 ...state,
                 error: null,
-                loading: false
+
             }
 
     }

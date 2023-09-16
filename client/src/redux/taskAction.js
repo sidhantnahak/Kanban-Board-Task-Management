@@ -2,9 +2,7 @@
 import axios from 'axios'
 import { clear_errors, delete_task_fail, delete_task_request, delete_task_sucess, getalltask_fail, getalltask_request, getalltask_sucess, gettask_fail, gettask_request, gettask_sucess, register_task_fail, register_task_request, register_task_sucess, update_task_fail, update_task_request, update_task_sucess } from './taskConstants'
 
-
-// const backend_url="https://studentdatacollection.onrender.com"
-const backend_url = "http://localhost:4000"
+const backend_url = "https://task-management-system-71zz.onrender.com"
 
 export const register_task = (data) => async (dispatch) => {
     const { title, description, status } = data;

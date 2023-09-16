@@ -16,7 +16,7 @@ export const Main = ({ note }) => {
 
     const [data, setdata] = useState({ title: "", description: "", status: "To Do" });
     const { sucess, error, isDeleted, isUpdated } = useSelector(state => state.task);
-    const { tasks, loading } = useSelector(state => state.tasks);
+    const { tasks, loading} = useSelector(state => state.tasks);
     const navigate = useNavigate();
     const params = useParams();
 
@@ -48,12 +48,13 @@ export const Main = ({ note }) => {
 
         }
         if (isUpdated) {
-            // seteditdata({ etitle: "", estatus: "To Do", edescription: "" })
             alert.success("Task Updated Sucessfully!")
             dispatch(getall_task())
             dispatch({ type: update_task_reset })
 
         }
+    
+
     }, [dispatch, error, sucess, alert, isDeleted, isUpdated, data])
     return (
         <div className='main_container'>
@@ -62,7 +63,7 @@ export const Main = ({ note }) => {
             <form style={{ width: "100%", boxShadow: "1px 1px 3px black", padding: "1rem 2rem", margin: "auto", fontSize: "1.1rem", fontWeight: "700", color: "rgb(67, 52, 52)" }} onSubmit={formHandler}>
                 <div className="mb-3">
                     <label htmlFor="exampleFormControlInput1" className="form-label">Enter Title</label>
-                    <input type="text" name="title" className="form-control" id="exampleFormControlInput1" value={data.title} onChange={onchangeHandler} required />
+                    <input ref={ref} type="text" name="title" className="form-control" id="exampleFormControlInput1" value={data.title} onChange={onchangeHandler} required />
 
                 </div>
 
@@ -74,19 +75,19 @@ export const Main = ({ note }) => {
                     <input type="submit" value="Add Task" className='btn btn-primary' />
                     <div className='form_check_div' style={{ display: "flex", gap: "1.5rem" }}>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" value="To Do"onChange={(e) => setdata({ ...data, status: e.target.value })}  checked={data.status=="To Do"} id="flexRadioDefault1" />
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" value="To Do" onChange={(e) => setdata({ ...data, status: e.target.value })} checked={data.status == "To Do"} id="flexRadioDefault1" />
                             <label className="form-check-label" htmlFor="flexRadioDefault1">
                                 To Do
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" value="Doing"onChange={(e) => setdata({ ...data, status: e.target.value })}  checked={data.status === "Doing"} id="flexRadioDefault2" />
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" value="Doing" onChange={(e) => setdata({ ...data, status: e.target.value })} checked={data.status === "Doing"} id="flexRadioDefault2" />
                             <label className="form-check-label" htmlFor="flexRadioDefault2">
                                 Doing
                             </label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="radio" name="flexRadioDefault" value="Done"onChange={(e) => setdata({ ...data, status: e.target.value })} checked={data.status === "Done"} id="flexRadioDefault3" />
+                            <input className="form-check-input" type="radio" name="flexRadioDefault" value="Done" onChange={(e) => setdata({ ...data, status: e.target.value })} checked={data.status === "Done"} id="flexRadioDefault3" />
                             <label className="form-check-label" htmlFor="flexRadioDefault3">
                                 Done
                             </label>
@@ -108,33 +109,41 @@ export const Main = ({ note }) => {
 
 
             {loading ? <Loader /> :
-             <> {note=="All Tasks" ? <h3 style={{textAlign:"center",margin:"1rem 0"}}>All Tasks</h3>:<h3 style={{textAlign:"center",margin:"1rem 0"}}>{note} Tasks</h3>
-             }
-             
-                <div id='tasks' className="notes_container">
-                    {note == "All Tasks" &&
-                   
+                <> {note == "All Tasks" ? <h3 style={{ textAlign: "center" }}>All Tasks</h3> : <h3 style={{ textAlign: "center" }}>{note} Tasks</h3>
+                }
 
-                        tasks && tasks.map(e => {
-                            return <TaskCard key={e._id} details={e} />
-                        })}
-                       
-                        
-                    {note === "To Do" && <h1>To Do Tasks</h1>&&
-                        tasks && tasks.filter(e => e.status === "To Do").map(e => {
-                            return <TaskCard key={e._id} details={e} />
-                        })}
-                    {note === "Doing" && <h1>Doing Tasks</h1>&&
-                        tasks && tasks.filter(e => e.status === "Doing").map(e => {
-                            return <TaskCard key={e._id} details={e} />
-                        })}
-                    {note === "Done" && <h1>Done Tasks</h1>&&
-                        tasks && tasks.filter(e => e.status === "Done").map(e => {
-                            return <TaskCard key={e._id} details={e} />
-                        })}
+                    <div id='tasks' className="notes_container">
+                        {note == "All Tasks" &&
 
-                </div>
-                 </>
+
+                            tasks && tasks.map(e => {
+                                return <TaskCard key={e._id} details={e} />
+                            })}
+
+                        {note === "To Do" && <h1>To Do Tasks</h1> &&
+                            tasks && tasks.filter(e => e.status === "To Do").map(e => {
+                                return <TaskCard key={e._id} details={e} />
+                            })}
+
+                        {note === "Doing" && <h1>Doing Tasks</h1> &&
+                            tasks && tasks.filter(e => e.status === "Doing").map(e => {
+                                return <TaskCard key={e._id} details={e} />
+                            })}
+
+                        {note === "Done" && <h1>Done Tasks</h1> &&
+                            tasks && tasks.filter(e => e.status === "Done").map(e => {
+                                return <TaskCard key={e._id} details={e} />
+                            })}
+
+                    </div>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+
+                        {note == "All Tasks" && tasks && tasks.length == 0 && <button onClick={()=>ref.current.focus()} className='btn btn-primary'>Add a Task</button>}
+                        {note == "To Do" && tasks && tasks.filter(e => e.status == "To Do").length == 0 && <button onClick={()=>ref.current.focus()} className=' btn btn-primary  '>Add a Task </button>}
+                        {note == "Doing" && tasks && tasks.filter(e => e.status == "Doing").length == 0 && <button onClick={()=>ref.current.focus()}className='btn btn-primary'>Add a Task</button>}
+                        {note == "Done" && tasks && tasks.filter(e => e.status == "Done").length == 0 && <button onClick={()=>ref.current.focus()} className='btn btn-primary'>Add a Task</button>}
+                    </div>
+                </>
 
             }
         </div >

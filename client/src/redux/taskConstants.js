@@ -3,9 +3,9 @@ export const register_task_sucess="register_task_sucess"
 export const register_task_fail="register_task_fail"
 export const register_task_reset="register_task_reset"
 
-export const getalltask_request="getalltask_task_request"
-export const getalltask_sucess="getalltask_task_sucess"
-export const getalltask_fail="getalltask_task_fail"
+export const getalltask_request="getalltask_request"
+export const getalltask_sucess="getalltask_sucess"
+export const getalltask_fail="getalltask_fail"
 
 export const gettask_request="gettask_task_request"
 export const gettask_sucess="gettask_task_sucess"

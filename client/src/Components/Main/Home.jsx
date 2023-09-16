@@ -3,12 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './home.css'
 
 const Home = ({setnote}) => {
-    const [width,setwidth]=useState(window.innerWidth);
-    window.onresize=()=>{
-        setwidth(window.innerWidth);
-    }
-   
-    const navigate = useNavigate();
+
     const closeMenu = (e) => {
         e.preventDefault()
         let toogle_btn_icon = document.getElementById('bar');

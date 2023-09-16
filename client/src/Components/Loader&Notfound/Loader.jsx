@@ -3,8 +3,11 @@ import loader from './loader.css'
 
 const Loader = () => {
   return (
-    <div className='outer'>
+    <div className="notes_container">
+      <div className='outer'>
+      </div>
     </div>
+
   )
 }
 
