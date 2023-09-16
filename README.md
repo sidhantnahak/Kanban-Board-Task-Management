@@ -13,10 +13,13 @@ Backend : Node js, Express js
 Database : MongoDB
 
 
-Features
+**Features**
+
 Serial No	Feature
 1	Crud Operation
-Sample Page Images ---
+
+
+**Sample Page Images**
 
 ![Screenshot (1311)](https://github.com/sidhantnahak/Kanban-Board-Task-Management/blob/main/client/src/Components/images/img_1.png)
 
