@@ -15,7 +15,6 @@ Database : MongoDB
 
 **Features**
 
-Serial No	Feature
 1	Crud Operation
 
 
